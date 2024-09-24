@@ -62,6 +62,10 @@ footer p {
   cursor: pointer;
   outline: none;
 }
+.note .delete {
+  border-radius: 4px;
+  margin: 0;
+}
 form.create-note {
   position: relative;
   width: 480px;

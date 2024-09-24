@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Zoom from "@material-ui/core/Zoom";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 
 function CreateArea(props) {
-  const [note, setNote] = useState({
-    title: "",
-    content: ""
-  });
-
   const [areaStatus, setStatus] = useState(false);
   function handleArea() {
     setStatus(true);
   }
+
+  const [note, setNote] = useState({
+    title: "",
+    content: "",
+  });
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -20,7 +20,7 @@ function CreateArea(props) {
     setNote((prevNote) => {
       return {
         ...prevNote,
-        [name]: value
+        [name]: value,
       };
     });
   }
@@ -29,7 +29,7 @@ function CreateArea(props) {
     props.onAdd(note);
     setNote({
       title: "",
-      content: ""
+      content: "",
     });
     event.preventDefault();
   }
@@ -37,13 +37,15 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note">
-        {areaStatus && (
+        {areaStatus ? (
           <input
             name="title"
             onChange={handleChange}
             value={note.title}
             placeholder="Title"
           />
+        ) : (
+          <></>
         )}
         <textarea
           name="content"
